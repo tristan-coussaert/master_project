@@ -34,11 +34,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $roles = [];
     
     #[ORM\Column(type: 'string')]
-    #[Groups("read")]
     private $password;
 
-    #[Groups("read", "write")]
-    #[SerialzedName("password")]
+    #[Groups("write")]
+    #[SerializedName("password")]
     private $plainPassword;
 
     #[ORM\Column(type: 'string', length: 255)]
