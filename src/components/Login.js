@@ -83,7 +83,7 @@ export default class Login extends Component {
 
     return (
       <div className="col-md-12">
-      {user && (<Navigate to="/profile" replace={true} />)}
+      {user && (<Navigate to="/home" replace={true} />)}
         
         <div className="card card-container">
           <img
