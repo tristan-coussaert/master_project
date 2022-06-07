@@ -30,10 +30,10 @@ function Login() {
             <form onSubmit={loginSubmit}>
                 <h2>Connexion</h2>
                 <input type="email" name="email" required
-                placeholder="Email" value={user.email} onChange={onChangeInput} />
+                placeholder="Adresse mail" value={user.email} onChange={onChangeInput} />
 
                 <input type="password" name="password" required autoComplete="on"
-                placeholder="Password" value={user.password} onChange={onChangeInput} />
+                placeholder="Mot de passe" value={user.password} onChange={onChangeInput} />
 
                 <div className="row">
                     <button type="submit">Connexion</button>
