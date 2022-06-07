@@ -1,6 +1,8 @@
 import React, {useContext, useState, useEffect} from 'react'
 import {GlobalState} from '../../../GlobalState'
 import axios from 'axios'
+import PaypalButton from './PaypalButton'
+
 
 function Cart() {
     const state = useContext(GlobalState)
@@ -63,6 +65,18 @@ function Cart() {
         }
     }
 
+    const tranSuccess = async(payment) => {
+        const {paymentID, address} = payment;
+
+        await axios.post('/api/payment', {cart, paymentID, address}, {
+            headers: {Authorization: token}
+        })
+
+        setCart([])
+        addToCart([])
+        alert("You have successfully placed an order.")
+    }
+
     if(cart.length === 0) 
         return <h2 style={{textAlign: "center", fontSize: "5rem"}}>Panier vide</h2> 
 
@@ -97,6 +111,9 @@ function Cart() {
 
             <div className="total">
                 <h3>Total : {total} €</h3>
+                <PaypalButton
+                total={total}
+                tranSuccess={tranSuccess} />
             </div>
         </div>
     )
