@@ -8,7 +8,7 @@
     "server": "nodemon server.js",
     "front": "cd front && npm run start",
     "server-install": "npm install",
-    "front-install": "cd front && npm install",
+    "front-install": "cd front && npm install --legacy-peer-deps",
     "install-all": "concurrently \"npm run server-install\" \"npm run front-install\"",
     "dev": "concurrently \"npm run server\" \"npm run front\"",
     "heroku-postbuild": "cd front && npm install && npm run build"
