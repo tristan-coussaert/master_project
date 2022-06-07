@@ -1,34 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Site de e-commerce
+Ce projet est un site de e-commerce d'achats type Amazon.
+Les technologies utilisées sont React pour le front, Express.js et Node.js pour l'api/serveur et MongoDB pour la bdd.
 
-## Getting Started
+## Lancement du projet
+Mettez-vous à la racine du projet et dans votre invite de commande faites un npm install.  
+Ensuite, faites un cd front puis un npm install --legacy-peer-deps  
+Puis enfin retourner à la racine du projet et faites un npm run dev  
+Les installations seront faites et le serveur lancé.  
+Vous pourrez ensuite vous rentre sur http://localhost:3000 pour afficher la Home page.  
 
-First, run the development server:
+## Différentes fonctionalités
+Vous pouvez créer un compte et vous y connecter pour effectuer vos achats.  
+Vous pouvez également constituer votre panier et payer avec paypal.  
+Consulter l'historique de ses commandes passées.  
+Rechercher avec la barre de recherche / filter par catégorie.  
+Il y a aussi un mode admin où on peut :
+* Créer / Editer / Supprimer une catégorie
+* Créer / Editer / Supprimer un produit
+* Consulter l'historique des commandes passées des différents utilisateurs
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Site hébergé sur Heroku
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+https://masterproject-amazonlike.herokuapp.com/
