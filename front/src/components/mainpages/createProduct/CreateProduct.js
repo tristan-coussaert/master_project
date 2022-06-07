@@ -140,7 +140,7 @@ function CreateProduct() {
                 <div className="row">
                     <label htmlFor="product_id">Produit ID</label>
                     <input type="text" name="product_id" id="product_id" required
-                    value={product.product_id} onChange={handleChangeInput} disabled={onEdit} />
+                    value={product.product_id} onChange={handleChangeInput} disabled={onEdit} autoComplete="off" />
                 </div>
 
                 <div className="row">

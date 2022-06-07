@@ -57,7 +57,7 @@ function Categories() {
             <form onSubmit={createCategory}>
                 <label htmlFor="category">Catégorie</label>
                 <input type="text" name="category" value={category} required
-                onChange={e => setCategory(e.target.value)} />
+                onChange={e => setCategory(e.target.value)} autoComplete="off" />
 
                 <button type="submit">{onEdit? "Modifer" : "Créer"}</button>
             </form>
