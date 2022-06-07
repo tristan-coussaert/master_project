@@ -47,7 +47,6 @@
     color: #323232;
 }
 .row_btn{
-    border-radius: 15px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -58,8 +57,7 @@
     text-transform: uppercase;
     color: white;
     font-weight: 600;
-    letter-spacing: 2px;
-    padding: 6px;
+    letter-spacing: 1px;
 }
 #btn_buy{
     border: 1px solid #f02d34 ;
@@ -75,6 +73,9 @@
     color: white;
     margin-left: 5px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .product_card input{
     position: absolute;
