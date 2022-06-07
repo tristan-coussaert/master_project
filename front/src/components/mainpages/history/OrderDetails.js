@@ -28,7 +28,7 @@ function OrderDetails() {
                         <th>Nom</th>
                         <th>Adresse</th>
                         <th>Code Postal</th>
-                        <th>Code du Pays</th>
+                        <th>Pays</th>
                     </tr>
                 </thead>
                 <tbody>
