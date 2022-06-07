@@ -31,10 +31,10 @@ function Register() {
             <form onSubmit={registerSubmit}>
                 <h2>Inscription</h2>
                 <input type="text" name="name" required
-                placeholder="Nom" value={user.name} onChange={onChangeInput} />
+                placeholder="Nom" value={user.name} onChange={onChangeInput} autoComplete="off" />
 
                 <input type="email" name="email" required
-                placeholder="Adresse mail" value={user.email} onChange={onChangeInput} />
+                placeholder="Adresse mail" value={user.email} onChange={onChangeInput} autoComplete="off" />
 
                 <input type="password" name="password" required autoComplete="on"
                 placeholder="Mot de passe" value={user.password} onChange={onChangeInput} />

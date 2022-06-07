@@ -30,7 +30,7 @@ function Login() {
             <form onSubmit={loginSubmit}>
                 <h2>Connexion</h2>
                 <input type="email" name="email" required
-                placeholder="Adresse mail" value={user.email} onChange={onChangeInput} />
+                placeholder="Adresse mail" value={user.email} onChange={onChangeInput} autoComplete="off" />
 
                 <input type="password" name="password" required autoComplete="on"
                 placeholder="Mot de passe" value={user.password} onChange={onChangeInput} />
