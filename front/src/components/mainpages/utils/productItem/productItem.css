@@ -62,12 +62,19 @@
     padding: 6px;
 }
 #btn_buy{
-    background: #555;
+    border: 1px solid #f02d34 ;
+    border-radius: 15px;
+    background-color: white;
+    color: #f02d34;
     margin-right: 5px;
+    cursor: pointer;
 }
 #btn_view{
-    background: teal;
+    border-radius: 15px;
+    background-color: #f02d34;
+    color: white;
     margin-left: 5px;
+    cursor: pointer;
 }
 .product_card input{
     position: absolute;

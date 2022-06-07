@@ -25,10 +25,10 @@ function OrderDetails() {
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Postal Code</th>
-                        <th>Country Code</th>
+                        <th>Nom</th>
+                        <th>Adresse</th>
+                        <th>Code Postal</th>
+                        <th>Code du Pays</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,9 +45,9 @@ function OrderDetails() {
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Products</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
+                        <th>Produits</th>
+                        <th>Quantité</th>
+                        <th>Prix</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,7 +57,7 @@ function OrderDetails() {
                             <td><img src={item.images.url} alt="" /></td>
                             <td>{item.title}</td>
                             <td>{item.quantity}</td>
-                            <td>$ {item.price * item.quantity}</td>
+                            <td>{item.price * item.quantity} €</td>
                         </tr>
                         ))
                     }
