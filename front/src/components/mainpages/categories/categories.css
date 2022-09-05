@@ -3,7 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin: 30px auto;
+    margin: auto;
 }
 .categories form{
     width: 290px;

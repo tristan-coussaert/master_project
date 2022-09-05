@@ -3,7 +3,8 @@
     border: 2px solid rgb(3, 165, 206);
     border-radius: 5px;
     padding: 30px;
-    margin: 50px auto;
+    height: auto;
+    margin: auto;
 }
 .login-page h2{
     text-transform: uppercase;

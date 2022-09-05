@@ -1,14 +1,18 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { AiFillInstagram, AiOutlineTwitter} from 'react-icons/ai';
+import { ThemeContext } from '../../ThemeContext';
 
 const Footer = () => {
+  const {theme} = useContext(ThemeContext);
   return (
+    <div className={theme ? 'contenu light' : 'contenu dark'}>
     <div className="footer-container">
       <p>2022 AmazonLike Tous droits réservés</p>
       <p className="icons">
         <AiFillInstagram />
         <AiOutlineTwitter />
       </p>
+    </div>
     </div>
   )
 }

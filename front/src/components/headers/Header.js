@@ -5,6 +5,7 @@ import Close from './icon/close.svg'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import { AiOutlineShopping } from 'react-icons/ai'
+import { ThemeContext } from '../../ThemeContext'
 
 function Header() {
     const state = useContext(GlobalState)
@@ -12,6 +13,7 @@ function Header() {
     const [isAdmin] = state.userAPI.isAdmin
     const [cart] = state.userAPI.cart
     const [menu, setMenu] = useState(false)
+    const {theme} = useContext(ThemeContext);
 
     const logoutUser = async () =>{
         await axios.get('/user/logout')
@@ -45,14 +47,14 @@ function Header() {
     }
 
     return (
-        <header>
+        <header className={theme ? 'contenu light' : 'contenu dark'}>
             <div className="menu" onClick={() => setMenu(!menu)}>
                 <img src={Menu} alt="" width="30" />
             </div>
 
-            <div className="logo">
+            <div className={theme ? 'contenu light logo' : 'contenu dark logo'}>
                 <h1>
-                    <Link to="/">{isAdmin ? 'Admin' : 'Amazon Like'}</Link>
+                    <Link to="/">{isAdmin ? 'Admin' : 'Tech Shop'}</Link>
                 </h1>
             </div>
 

@@ -17,6 +17,7 @@ const initialState = {
 function CreateProduct() {
     const state = useContext(GlobalState)
     const [product, setProduct] = useState(initialState)
+    const [error, setError] = useState();
     const [categories] = state.categoriesAPI.categories
     const [images, setImages] = useState(false)
     const [loading, setLoading] = useState(false)
@@ -51,16 +52,31 @@ function CreateProduct() {
     const handleUpload = async e =>{
         e.preventDefault()
         try {
-            if(!isAdmin) return alert("You're not an admin")
+            if(!isAdmin){
+                setError("Vous n'êtes pas un administrateur")
+        }else {
+            setError(undefined)
+        }
             const file = e.target.files[0]
             
-            if(!file) return alert("File not exist.")
+            if(!file){
+                setError("Ce fichier n'existe pas")
+            }else {
+                setError(undefined)
+            }
 
-            if(file.size > 1024 * 1024) // 1mb
-                return alert("Size too large!")
+            if(file.size > 1024 * 1024){
+                setError('Fichier trop volumineux')
+            }else {
+            setError(undefined)
+            }
 
-            if(file.type !== 'image/jpeg' && file.type !== 'image/png') // 1mb
-                return alert("File format is incorrect.")
+            if(file.type !== 'image/jpeg' && file.type !== 'image/png')
+            {
+                setError('Veuillez utiliser un ficher au format jpeg ou png')
+            }else {
+                setError(undefined)
+                }
 
             let formData = new FormData()
             formData.append('file', file)
@@ -73,7 +89,6 @@ function CreateProduct() {
             setImages(res.data)
 
         } catch (err) {
-            alert(err.response.data.msg)
         }
     }
 
@@ -99,8 +114,16 @@ function CreateProduct() {
     const handleSubmit = async e =>{
         e.preventDefault()
         try {
-            if(!isAdmin) return alert("You're not an admin")
-            if(!images) return alert("No Image Upload")
+            if(!isAdmin){
+                setError("Vous n'êtes pas un administrateur")
+        }else {
+            setError(undefined)
+        }
+            if(!images){
+                setError("Veuillez ajouter une image")
+        }else {
+            setError(undefined)
+        }
 
             if(onEdit){
                 await axios.put(`/api/products/${product._id}`, {...product, images}, {
@@ -114,7 +137,6 @@ function CreateProduct() {
             setCallback(!callback)
             history.push("/")
         } catch (err) {
-            alert(err.response.data.msg)
         }
     }
 
@@ -126,6 +148,7 @@ function CreateProduct() {
             <div className="upload">
                 <input type="file" name="file" id="file_up" onChange={handleUpload}/>
                 {
+                    error !== undefined ? <p className='error'>{error}</p>:
                     loading ? <div id="file_img"><Loading /></div>
 
                     :<div id="file_img" style={styleUpload}>
@@ -151,8 +174,7 @@ function CreateProduct() {
 
                 <div className="row">
                     <label htmlFor="price">Prix</label>
-                    <input type="number" name="price" id="price" required
-                    value={product.price} onChange={handleChangeInput} />
+                    <input type="number" name="price" id="price" required value={product.price} onChange={handleChangeInput} min={1} />
                 </div>
 
                 <div className="row">
@@ -169,7 +191,7 @@ function CreateProduct() {
 
                 <div className="row">
                     <label htmlFor="categories">Catégories : </label>
-                    <select name="category" value={product.category} onChange={handleChangeInput} >
+                    <select name="category" value={product.category} onChange={handleChangeInput} required >
                         <option value="">Veuillez sélectionner une catégorie</option>
                         {
                             categories.map(category => (

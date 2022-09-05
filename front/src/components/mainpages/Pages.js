@@ -10,17 +10,20 @@ import Cart from './cart/Cart'
 import NotFound from './utils/not_found/NotFound'
 import Categories from './categories/Categories'
 import CreateProduct from './createProduct/CreateProduct'
-
+import {ThemeContext} from '../../ThemeContext'
 import {GlobalState} from '../../GlobalState'
+import './Pages.css'
 
 
 function Pages() {
     const state = useContext(GlobalState)
     const [isLogged] = state.userAPI.isLogged
     const [isAdmin] = state.userAPI.isAdmin
+    const {theme} = useContext(ThemeContext);
 
 
     return (
+        <div className={theme ? 'contenu light' : 'contenu dark'}>
         <Switch>
             <Route path="/" exact component={Products} />
             <Route path="/detail/:id" exact component={DetailProduct} />
@@ -40,6 +43,7 @@ function Pages() {
 
             <Route path="*" exact component={NotFound} />
         </Switch>
+        </div>
     )
 }
 

@@ -43,6 +43,15 @@
     left: 0;
     background: white;
 }
+
+.error{
+    color: red;
+    font-weight: bold;
+    position: absolute;
+    padding-top: 15px;
+}
+
+
 #file_img img{
     width: 100%;
     height: 100%;

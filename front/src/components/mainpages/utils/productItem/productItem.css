@@ -32,7 +32,7 @@
     white-space: nowrap;
     text-transform: capitalize;
     cursor: pointer;
-    color: #323232;
+    color: crimson;
 }
 .product_card span{
     color: crimson;
@@ -44,7 +44,7 @@
     -webkit-line-clamp: 3;
     height: 70px;
     overflow: hidden;
-    color: #323232;
+    color: crimson;
 }
 .row_btn{
     width: 100%;
