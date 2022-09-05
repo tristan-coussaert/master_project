@@ -4,6 +4,7 @@ import axios from 'axios'
 function UserAPI(token) {
     const [isLogged, setIsLogged] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false)
+    const [error, setError] = useState(null)
     const [cart, setCart] = useState([])
     const [history, setHistory] = useState([])
 
@@ -33,7 +34,7 @@ function UserAPI(token) {
     
 
     const addCart = async (product) => {
-        if(!isLogged) return alert("Veuillez vous connecter pour poursuivre l'achat.")
+        if(!isLogged) setError("Veuillez vous connecter pour poursuivre l'achat.")
 
         const check = cart.every(item =>{
             return item._id !== product._id
@@ -47,7 +48,7 @@ function UserAPI(token) {
             })
 
         }else{
-            alert("Ce produit a été ajouté au panier.")
+            setError("Ce produit a été ajouté au panier.")
         }
     }
 
@@ -56,7 +57,8 @@ function UserAPI(token) {
         isAdmin: [isAdmin, setIsAdmin],
         cart: [cart, setCart],
         addCart: addCart,
-        history: [history, setHistory]
+        history: [history, setHistory],
+        error: [error, setError]
     }
 }
 

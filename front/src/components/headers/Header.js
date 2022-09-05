@@ -11,6 +11,7 @@ function Header() {
     const state = useContext(GlobalState)
     const [isLogged] = state.userAPI.isLogged
     const [isAdmin] = state.userAPI.isAdmin
+    const [error] = state.userAPI.error
     const [cart] = state.userAPI.cart
     const [menu, setMenu] = useState(false)
     const {theme} = useContext(ThemeContext);
@@ -57,6 +58,8 @@ function Header() {
                     <Link to="/">{isAdmin ? 'Admin' : 'Tech Shop'}</Link>
                 </h1>
             </div>
+
+            {error && <div className="error">{error}</div>}
 
             <ul style={styleMenu}>
                 
