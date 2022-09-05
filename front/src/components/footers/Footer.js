@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div className={theme ? 'contenu light' : 'contenu dark'}>
     <div className="footer-container">
-      <p>2022 AmazonLike Tous droits réservés</p>
+      <p>2022 Tech Shop Tous droits réservés</p>
       <p className="icons">
         <AiFillInstagram />
         <AiOutlineTwitter />
