@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import axios from 'axios'
 
 function Login() {
+    const [error, setError] = useState(null)
     const [user, setUser] = useState({
         email:'', password: ''
     })
@@ -21,7 +22,7 @@ function Login() {
             
             window.location.href = "/";
         } catch (err) {
-            alert(err.response.data.msg)
+            setError(err.response.data.msg)
         }
     }
 
@@ -39,6 +40,7 @@ function Login() {
                     <button type="submit">Connexion</button>
                     <Link to="/register">S'inscrire</Link>
                 </div>
+                {error && <div className="error">{error}</div>}
             </form>
         </div>
     )

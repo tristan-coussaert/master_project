@@ -7,6 +7,8 @@ import Footer from './components/footers/Footer';
 import ThemeContextProvider from './ThemeContext';
 import BtnToggle from './BtnToggle';
 
+import './App.css';
+
 function App() {
   return (
     <DataProvider>

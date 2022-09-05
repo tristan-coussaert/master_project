@@ -9,10 +9,10 @@ const userCtrl = {
             const {name, email, password} = req.body;
 
             const user = await Users.findOne({email})
-            if(user) return res.status(400).json({msg: "The email already exists."})
+            if(user) return res.status(400).json({msg: "Cette adresse mail existe déjà."})
 
             if(password.length < 6) 
-                return res.status(400).json({msg: "Password is at least 6 characters long."})
+                return res.status(400).json({msg: "Le mot de passe doit faire minimum 6 caractères."})
 
             const passwordHash = await bcrypt.hash(password, 10)
             const newUser = new Users({
@@ -41,10 +41,10 @@ const userCtrl = {
             const {email, password} = req.body;
 
             const user = await Users.findOne({email})
-            if(!user) return res.status(400).json({msg: "User does not exist."})
+            if(!user) return res.status(400).json({msg: "Cette adresse mail n'existe pas"})
 
             const isMatch = await bcrypt.compare(password, user.password)
-            if(!isMatch) return res.status(400).json({msg: "Incorrect password."})
+            if(!isMatch) return res.status(400).json({msg: "Mot de passe invalide"})
 
             const accesstoken = createAccessToken({id: user._id})
             const refreshtoken = createRefreshToken({id: user._id})
@@ -64,7 +64,7 @@ const userCtrl = {
     logout: async (req, res) =>{
         try {
             res.clearCookie('refreshtoken', {path: '/user/refresh_token'})
-            return res.json({msg: "Logged out"})
+            return res.json({msg: "Déconnexion"})
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
@@ -72,10 +72,10 @@ const userCtrl = {
     refreshToken: (req, res) =>{
         try {
             const rf_token = req.cookies.refreshtoken;
-            if(!rf_token) return res.status(400).json({msg: "Please Login or Register"})
+            if(!rf_token) return res.status(400).json({msg: "Veuillez vous connecter ou vous s'inscrire"})
 
             jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) =>{
-                if(err) return res.status(400).json({msg: "Please Login or Register"})
+                if(err) return res.status(400).json({msg: "Veuillez vous connecter ou vous s'inscrire"})
 
                 const accesstoken = createAccessToken({id: user.id})
 
@@ -132,4 +132,3 @@ const createRefreshToken = (user) =>{
 
 
 module.exports = userCtrl
-
