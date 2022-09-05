@@ -6,6 +6,7 @@ function Categories() {
     const state = useContext(GlobalState)
     const [categories] = state.categoriesAPI.categories
     const [category, setCategory] = useState('')
+    const [message, setMessage] = useState(null)
     const [token] = state.token
     const [callback, setCallback] = state.categoriesAPI.callback
     const [onEdit, setOnEdit] = useState(false)
@@ -18,12 +19,12 @@ function Categories() {
                 const res = await axios.put(`/api/category/${id}`, {name: category}, {
                     headers: {Authorization: token}
                 })
-                alert(res.data.msg)
+                setMessage(res.data.msg)
             }else{
                 const res = await axios.post('/api/category', {name: category}, {
                     headers: {Authorization: token}
                 })
-                alert(res.data.msg)
+                setMessage(res.data.msg)
             }
             setOnEdit(false)
             setCategory('')
@@ -45,7 +46,7 @@ function Categories() {
             const res = await axios.delete(`/api/category/${id}`, {
                 headers: {Authorization: token}
             })
-            alert(res.data.msg)
+            setMessage(res.data.msg)
             setCallback(!callback)
         } catch (err) {
             alert(err.response.data.msg)
@@ -54,6 +55,7 @@ function Categories() {
 
     return (
         <div className="categories">
+            {message && <div className="message">{message}</div>}
             <form onSubmit={createCategory}>
                 <label htmlFor="category">Catégorie</label>
                 <input type="text" name="category" value={category} required

@@ -40,3 +40,16 @@
     margin-bottom: 10px;
     border: 1px solid #ccc;
 }
+
+div.message {
+    padding: 10px;
+    background: #efffef;
+    border: 1px solid #699e69;
+    color: green;
+    position: absolute;
+    border-radius: 15px;
+    left: 50%;
+    transform: translate(-50%,-130%);
+    height: auto;
+    font-size: 12px;
+  }
